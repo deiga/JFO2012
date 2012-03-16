@@ -22,7 +22,7 @@ quadruple x = double ( double x )
 -- Double-tyyppistä argumenttia, a, b,c ja x. Funktion arvo on 2.
 -- asteen polynomin, jonka kertoimet ovat a, b ja c arvo pisteessä x.
 poly2 :: Double -> Double -> Double -> Double -> Double
-poly2 a b c x = undefined
+poly2 a b c x = a*x^2 + b*x + c
 
 -- Tehtävä 5: toteuta alle funktio entten, joka palauttaa parillisille
 -- argumenteille merkkijonon "entten" ja parittomille "tentten"
@@ -38,7 +38,7 @@ entten x = if even x then "entten" else "tentten"
 -- funktio palauttaa tyhjän merkkijonon.
 --
 -- Jakojäännöksen voit laskea funktiolla mod
-
+fizzbuzz :: Integer -> String
 fizzbuzz x
   | mod x 3 == 0 && mod x 5 == 0 = "FizzBuzz"
   | mod x 3 == 0                 = "Fizz"
@@ -49,13 +49,15 @@ fizzbuzz x
 -- parametri on 0 ja False muuten. KÄYTÄ HAHMONSOVITUSTA!
 --
 -- Muistathan, totuusarvot Haskellissa ovat tyyppiä Bool.
-
-isZero = undefined
+isZero :: Integer -> Bool
+isZero 0 = True
+isZero _ = False
 
 -- Tehtävä 8: toteuta rekursiivinen funktio sumTo n, joka laskee
 -- summan 1+2+...+n
-
-sumTo = undefined
+sumTo :: Integer -> Integer
+sumTo 1 = 1
+sumTo n = sumTo( n-1) + n
 
 -- Tehtävä 9: toteuta rekursiivinen funktio power n k, joka laskee n^k.
 
