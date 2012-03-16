@@ -62,7 +62,7 @@ sumTo n = sumTo( n-1) + n
 -- Tehtävä 9: toteuta rekursiivinen funktio power n k, joka laskee n^k.
 
 power :: Integer -> Integer -> Integer
-power n 0 = 1
+power _ 0 = 1
 power n 1 = n
 power n k = power n (k-1) * n
 
@@ -85,7 +85,12 @@ ilog2 x = 1 + ilog2 (div x 2)
 -- että yhtälöitä sovitetaan määrittelyjärjestyksessä!
 
 binomial :: Integer -> Integer -> Integer
-binomial = undefined
+binomial _ 0 = 1
+binomial 0 k = 0
+binomial n k = first + second
+  where 
+    first = binomial (n-1) k
+    second = binomial (n-1) (k-1)
 
 -- Tehtävä 12: toteuta funktio tribonacci, joka laskee n:nnen
 -- tribonaccin lukujonon luvun. Tribonaccin lukujono määritellään
