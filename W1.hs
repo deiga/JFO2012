@@ -62,7 +62,9 @@ sumTo n = sumTo( n-1) + n
 -- Tehtävä 9: toteuta rekursiivinen funktio power n k, joka laskee n^k.
 
 power :: Integer -> Integer -> Integer
-power = undefined
+power n 0 = 1
+power n 1 = n
+power n k = power n (k-1) * n
 
 -- Tehtävä 10: toteuta rekursiivinen funktio ilog2 n, joka laskee
 -- montako kertaa kokonaisluvun voi jakaa kahdella ennen kuin siitä
