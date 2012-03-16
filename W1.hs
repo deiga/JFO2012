@@ -71,7 +71,8 @@ power n k = power n (k-1) * n
 -- tulee 1. Käytä kokonaislukujen jakolaskua eli funktiota div
 
 ilog2 :: Integer -> Integer
-ilog2 = undefined
+ilog2 1 = 0
+ilog2 x = 1 + ilog2 (div x 2)
 
 -- Tehtävä 11: toteuta rekursiivinen funktio binomial, joka laskee
 -- binomikertoimen. Binomikertoimen määrittelee seuraava
