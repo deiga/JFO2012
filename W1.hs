@@ -152,8 +152,9 @@ hassuCompare x y
 -- Huomio: käytä hassuCompare-funktiota
 
 hassuMinimi :: Int -> Int -> Int
-hassuMinimi = undefined
-
+hassuMinimi x y = case hassuCompare x y of  LT -> x
+                                            GT -> y
+                                            EQ -> x
 
 -- Tehtävä 16: toteuta funktio pyramidi, joka tuottaa tällaisia
 -- merkkijonoja:
