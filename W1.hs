@@ -115,7 +115,9 @@ tribonacci' a b c n = tribonacci' b c (a+b+c) (n-1)
 -- funktioksi myGcd :: Integer -> Integer -> Integer
 
 myGcd :: Integer -> Integer -> Integer
-myGcd = undefined
+myGcd 0 b = b
+myGcd a 0 = a
+myGcd a b = if a > b then myGcd (a-b) b else myGcd a (b-a)
 
 -- Tehtävä 14: Haskellin standardikirjasto määrittelee tyypin
 -- Ordering, jonka arvot ovat LT, GT ja EQ. Voit kokeilla miten
