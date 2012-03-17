@@ -134,7 +134,10 @@ myGcd = undefined
 -- 2. Muuten lukujen järjestys on normaali
 
 hassuCompare :: Int -> Int -> Ordering
-hassuCompare = undefined
+hassuCompare x y
+  | even x && odd y = LT
+  | even y && odd x = GT
+  | otherwise       = compare x y
 
 -- Tehtävä 15: Toteuta funktio hassuMinimi :: Int -> Int -> Int, joka
 -- palauttaa hassuComparen mielestä pienimmän argumenteistaan. Käytä
