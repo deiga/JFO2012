@@ -194,7 +194,9 @@ smallestDivisor' sd k n
 -- itsellään ja 1:llä. 0 ja 1 eivät ole alkulukuja.
 
 isPrime :: Integer -> Bool
-isPrime = undefined
+isPrime 0 = False
+isPrime 1 = False
+isPrime n = if smallestDivisor n == n then True else False
 
 -- Tehtävä 19: toteuta funktio nextPrime, joka palauttaa annettua
 -- lukua seuraavan alkuluvun. Jos luku on alkuluku, palautetaan se
