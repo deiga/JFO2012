@@ -105,7 +105,10 @@ binomial n k = first + second
 -- fibonacci-esimerkissä
 
 tribonacci :: Integer -> Integer
-tribonacci = undefined
+tribonacci n = tribonacci' 0 0 1 n 
+
+tribonacci' a b c 1 = c
+tribonacci' a b c n = tribonacci' b c (a+b+c) (n-1)
 
 -- Tehtävä 13: Eukleideen algoritmi on tapa laskea kahden luvun suurin
 -- yhteinen tekijä. Lue algoritmin kuvaus wikipediasta ja toteuta se
