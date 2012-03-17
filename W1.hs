@@ -170,7 +170,9 @@ hassuMinimi x y = case hassuCompare x y of  LT -> x
 -- * tarvitset rekursiiviisen apufunktion
 
 pyramidi :: Integer -> String
-pyramidi = undefined
+pyramidi n = split ([0..n] ++ [n-1, n-2..0])
+  where split [x] = show x
+        split (x:xs) = show x ++ "," ++ split xs
 
 -- Tehtävä 17: toteuta funktio smallestDivisor n, joka palauttaa
 -- pienimmän luvun k>1 s.e. n on jaollinen k:lla.
