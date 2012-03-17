@@ -180,7 +180,12 @@ pyramidi n = split ([0..n] ++ [n-1, n-2..0])
 -- Kannattaa muistaa funktio mod
 
 smallestDivisor :: Integer -> Integer
-smallestDivisor = undefined
+smallestDivisor n = smallestDivisor' n (n-1) n
+
+smallestDivisor' sd 1 _ = sd
+smallestDivisor' sd k n
+  | mod n k == 0  = smallestDivisor' k (k-1) n
+  | otherwise     = smallestDivisor' sd (k-1) n
 
 -- Tehtävä 18: toteuta funktio isPrime, joka tarkistaa onko annettu
 -- luku alkuluku käyttämällä funktiota smallestDivisor.
