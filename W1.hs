@@ -180,6 +180,7 @@ pyramidi n = split ([0..n] ++ [n-1, n-2..0])
 -- Kannattaa muistaa funktio mod
 
 smallestDivisor :: Integer -> Integer
+smallestDivisor 0 = 0
 smallestDivisor n = smallestDivisor' n (n-1) n
 
 smallestDivisor' sd 1 _ = sd
@@ -196,7 +197,9 @@ smallestDivisor' sd k n
 isPrime :: Integer -> Bool
 isPrime 0 = False
 isPrime 1 = False
-isPrime n = if smallestDivisor n == n then True else False
+isPrime n 
+  | smallestDivisor n == n  = True
+  | otherwise               = False
 
 -- Tehtävä 19: toteuta funktio nextPrime, joka palauttaa annettua
 -- lukua seuraavan alkuluvun. Jos luku on alkuluku, palautetaan se
@@ -205,5 +208,7 @@ isPrime n = if smallestDivisor n == n then True else False
 -- Tässä kannattaa luonnollisesti käyttää apuna funktiota isPrime.
 
 nextPrime :: Integer -> Integer
-nextPrime = undefined
+nextPrime n
+  | isPrime n   = n
+  | otherwise   = nextPrime (n+1)
 
