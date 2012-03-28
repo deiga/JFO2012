@@ -57,7 +57,9 @@ substring i n s = take n (drop i s )
 --  mymax head   [1,2,3] [4,5]  ==>  [4,5]  
 
 mymax :: (a -> Int) -> a -> a -> a
-mymax measure a b = undefined
+mymax measure a b
+  | measure a > measure b = a
+  | measure b > measure a = b
 
 -- Tehtävä 7: Määrittele funktio countSorted, joka laskee montako
 -- sille annetuista merkkijonoista on aakkosjärjestyksessä.
@@ -65,7 +67,8 @@ mymax measure a b = undefined
 -- Muista funktiot length, filter ja sort.
 
 countSorted :: [String] -> Int
-countSorted ss = undefined
+countSorted ss = length (filter sorted ss)
+  where sorted xs = xs == sort xs
 
 -- Tehtävä 8: Määrittele funktio hassu, joka ottaa syötteenään listan
 -- merkkijonoja, ja palauttaa yhden merkkijonon, joka sisältää
