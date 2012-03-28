@@ -88,7 +88,7 @@ binomial :: Integer -> Integer -> Integer
 binomial _ 0 = 1
 binomial 0 k = 0
 binomial n k = first + second
-  where 
+  where
     first = binomial (n-1) k
     second = binomial (n-1) (k-1)
 
@@ -105,7 +105,7 @@ binomial n k = first + second
 -- fibonacci-esimerkissä
 
 tribonacci :: Integer -> Integer
-tribonacci n = tribonacci' 0 0 1 n 
+tribonacci n = tribonacci' 0 0 1 n
 
 tribonacci' a b c 1 = c
 tribonacci' a b c n = tribonacci' b c (a+b+c) (n-1)
@@ -197,7 +197,7 @@ smallestDivisor' sd k n
 isPrime :: Integer -> Bool
 isPrime 0 = False
 isPrime 1 = False
-isPrime n 
+isPrime n
   | smallestDivisor n == n  = True
   | otherwise               = False
 
