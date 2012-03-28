@@ -45,7 +45,7 @@ remove i xs = take (i) xs ++ drop (i+1) xs
 -- Muista! merkkijonot ovat listoja
 
 substring :: Int -> Int -> String -> String
-substring i n s = undefined
+substring i n s = take n (drop i s )
 
 -- Tehtävä 6: Määrittele funktio mymax, joka ottaa argumenteikseen
 -- mittausfunktion tyyppiä a -> Int ja kaksi alkiota tyyppiä a.
