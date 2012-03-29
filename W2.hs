@@ -137,7 +137,9 @@ powers n max = takeWhile (<=max) (map (n^) [0..max])
 --     ==> Avvt
 
 search :: (a->a) -> (a->Bool) -> a -> a
-search f p x = undefined
+search f p x 
+  | p x       = x
+  | otherwise = search f p (f x)
 
 -- Tehtävä 12: Määrittele funktio fromTo n k, joka tuottaa listan
 -- luvuista n..k. Rakenna lista itse, käyttämällä :-operaattoria.
