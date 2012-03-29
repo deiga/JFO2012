@@ -252,7 +252,17 @@ map2 f (a:as) (b:bs) = (f a b) : map2 f as bs
 -- oikein mutta kummallisesti :(
 
 laskuri :: [String] -> [String]
-laskuri commands = undefined
+laskuri commands = laskuri' commands 0 0
+
+laskuri' [] _ _ = []
+laskuri' (command:commands) a b
+  | command == "incA"   = laskuri' commands (a+1) b
+  | command == "incB"   = laskuri' commands a (b+1)
+  | command == "decA"   = laskuri' commands (a-1) b
+  | command == "decB"   = laskuri' commands a (b-1)
+  | command == "printA" = show a : laskuri' commands a b
+  | command == "printB" = show b : laskuri' commands a b
+  | otherwise           = laskuri' commands a b
 
 -- Tehtävä 20: Tee funktio squares :: Int -> [Integer], joka palauttaa
 -- n pienintä neliötä (eli lukua joka on muotoa x*x) jotka alkavat ja
