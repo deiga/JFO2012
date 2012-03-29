@@ -81,7 +81,11 @@ countSorted ss = length (filter sorted ss)
 --  - intercalate               modulista Data.List
 
 hassu :: [String] -> String
-hassu strings = undefined
+hassu strings = intercalate " " (map  firstUpper  (filter overFive strings))
+  where overFive xs = length xs > 5
+        firstUpper :: String -> String
+        firstUpper [] = []
+        firstUpper (x:xs) = toUpper(x) : firstUpper(xs)
 
 -- Tehtävä 9: Toteuta "quicksort", eli rekursiivinen
 -- lajittelualgoritmi joka toimii seuraavasti:
