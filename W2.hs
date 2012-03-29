@@ -144,14 +144,15 @@ search f p x = undefined
 
 fromTo :: Int -> Int -> [Int]
 fromTo n k 
-  | n <= k     = n : fromTo (n+1) k
-  | n > k     = []
+  | n <= k = n : fromTo (n+1) k
+  | n > k  = []
 
 -- Tehtävä 13: Määrittele funktio sums i, joka tuottaa listan
 -- [1, 1+2, 1+2+3, .., 1+2+..+i]
 
 sums :: Int -> [Int]
-sums i = undefined
+sums i = map sumTo [1..i]
+  where sumTo n = sum [1..n]
 
 -- Tehtävä 14: Määrittele rekursiota ja listojen hahmonsovitusta
 -- käyttäen funktio mylast, joka palauttaa listan viimeisen alkion tai
