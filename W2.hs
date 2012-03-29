@@ -102,7 +102,8 @@ hassu strings = intercalate " " (map  firstUpper  (filter overFive strings))
 -- tapahtuu "in-place", käyttämättä lisätilaa.
 
 quicksort :: [Int] -> [Int]
-quicksort xs = undefined
+quicksort [] = []
+quicksort (x:xs) = quicksort (filter (x>) xs) ++ [x] ++ quicksort (filter (x<=) xs)
 
 -- Tehtävä 10: Määrittele funktio powers k max, joka palauttaa
 -- (järjestetyn) listan kaikista k:n potensseista, jotka ovat
