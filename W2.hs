@@ -207,7 +207,11 @@ sumsOf (x:y:xs) = x : sumsOf((x+y):xs)
 --     ==> 0
 
 mymaximum :: (a -> a -> Ordering) -> a -> [a] -> a
-mymaximum cmp def xs = undefined
+mymaximum _ def [] = def
+mymaximum cmp def [x] = x
+mymaximum cmp def (x:y:xs)
+  | cmp x y == GT = mymaximum cmp def (x:xs)
+  | otherwise       = mymaximum cmp def (y:xs)
 
 
 -- Tehtävä 18: Määrittele funktio map2 käyttäen rekursiota. Funktio
