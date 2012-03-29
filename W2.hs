@@ -271,5 +271,6 @@ laskuri' (command:commands) a b
 -- Esimerkki: squares 9 ==> [1,4,9,121,484,676,1521,1681,4624]
 
 squares :: Int -> [Integer]
-squares n = undefined
+squares n = take n (filter startEndSame (map (^2) [1..]))
+  where startEndSame x = head(show x) == last(show x)
 
