@@ -118,7 +118,7 @@ quicksort (x:xs) = quicksort (filter (x>) xs) ++ [x] ++ quicksort (filter (x<=) 
 --   * takeWhile
 
 powers :: Int -> Int -> [Int]
-powers n max = undefined
+powers n max = takeWhile (<=max) (map (n^) [0..max])
 
 -- Tehtävä 11: Tee funktio search, joka ottaa argumenteikseen
 -- alkuarvon, päivitysfunktion ja lopetusehdon. Search käyttää
