@@ -178,6 +178,7 @@ sorted [x,y] = x <= y
 sorted (x:y:xs)
   | x <= y     = sorted (y:xs)
   | otherwise = False
+
 -- Tehtävä 16: Määrittele funktio sumsOf, joka laskee annetun listan
 -- juoksevat summat näin:
 --   sumsOf [a,b,c]  ==>  [a,a+b,a+b+c]
@@ -186,7 +187,9 @@ sorted (x:y:xs)
 -- Käytä listojen hahmontunnistusta ja rekursiota, älä valmiita listafunktioita.
 
 sumsOf :: [Int] -> [Int]
-sumsOf xs = undefined
+sumsOf [] = []
+sumsOf [x] = [x]
+sumsOf (x:y:xs) = x : sumsOf((x+y):xs)
 
 -- Tehtävä 17: Määrittele funktio mymaximum, joka palauttaa listan
 -- suurimman arvon. mymaximumille kuitenkin annetaan parametrina
