@@ -173,8 +173,11 @@ mylast def (x:xs) = mylast def xs
 -- listafunktioita.
 
 sorted :: [Int] -> Bool
-sorted xs = undefined
-
+sorted [] = True
+sorted [x,y] = x <= y
+sorted (x:y:xs)
+  | x <= y     = sorted (y:xs)
+  | otherwise = False
 -- Tehtävä 16: Määrittele funktio sumsOf, joka laskee annetun listan
 -- juoksevat summat näin:
 --   sumsOf [a,b,c]  ==>  [a,a+b,a+b+c]
