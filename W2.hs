@@ -211,7 +211,7 @@ mymaximum _ def [] = def
 mymaximum cmp def [x] = x
 mymaximum cmp def (x:y:xs)
   | cmp x y == GT = mymaximum cmp def (x:xs)
-  | otherwise       = mymaximum cmp def (y:xs)
+  | otherwise     = mymaximum cmp def (y:xs)
 
 
 -- Tehtävä 18: Määrittele funktio map2 käyttäen rekursiota. Funktio
@@ -223,7 +223,9 @@ mymaximum cmp def (x:y:xs)
 -- zipWith.
 
 map2 :: (a -> b -> c) -> [a] -> [b] -> [c]
-map2 f as bs = undefined
+map2 _ _ [] = []
+map2 _ [] _ = []
+map2 f (a:as) (b:bs) = (f a b) : map2 f as bs
 
 -- Tehtävä 19: Tee "komentotulkki" seuraavalla tavalla: määrittele
 -- funktio laskuri :: [String] -> [String], joka saa syötteenään
@@ -260,3 +262,4 @@ laskuri commands = undefined
 
 squares :: Int -> [Integer]
 squares n = undefined
+
