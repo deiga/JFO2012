@@ -163,7 +163,9 @@ sums i = map sumTo [1..i]
 --   mylast 0 [1,2,3] ==> 3
 
 mylast :: a -> [a] -> a
-mylast def xs = undefined
+mylast def [] = def
+mylast _ (x:[]) = x
+mylast def (x:xs) = mylast def xs
 
 -- Tehtävä 15: Määrittele funktio sorted :: [Int] -> Bool, joka
 -- tarkastaa, onko annettu lista nousevassa suuruusjärjestyksessä.
