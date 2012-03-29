@@ -143,7 +143,9 @@ search f p x = undefined
 -- luvuista n..k. Rakenna lista itse, käyttämällä :-operaattoria.
 
 fromTo :: Int -> Int -> [Int]
-fromTo n k = undefined
+fromTo n k 
+  | n <= k     = n : fromTo (n+1) k
+  | n > k     = []
 
 -- Tehtävä 13: Määrittele funktio sums i, joka tuottaa listan
 -- [1, 1+2, 1+2+3, .., 1+2+..+i]
