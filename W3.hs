@@ -27,7 +27,8 @@ hei = do
 -- tulostaa "HEI nimi"
 
 tervehdi :: String -> IO ()
-tervehdi s = undefined
+tervehdi s = do
+  putStrLn $ "HEI "++s
 
 -- Tehtävä 3: Määrittele operaatio tervehdi', joka lukee nimen
 -- näppäimistöltä ja sitten tervehtii kuten edellisessä tehtävässä.
