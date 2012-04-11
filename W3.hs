@@ -97,7 +97,13 @@ whenM cond op = do
 -- Tämä tulostaa JEE niin kauan kuin käyttäjä vastaa K
 
 while :: IO Bool -> IO () -> IO ()
-while ehto op = undefined
+while ehto op = do
+  foo <- ehto
+  if not foo
+    then return ()
+    else do
+      op
+      while ehto op
 
 -- Tehtävä 10: Toteuta funktio debug, joka ottaa merkkijonon s ja
 -- IO-operaation op, ja palauttaa IO-operaation joka tulostaa annetun
