@@ -19,7 +19,9 @@ import System.IO
 -- joista ensimmäinen on "HEI" ja toinen on "MAAILMA".
 
 hei :: IO ()
-hei = undefined
+hei = do
+  putStrLn "HEI"
+  putStrLn "MAAILMA"
 
 -- Tehtävä 2: Määrittele operaatio tervehdi siten, että tervehdi nimi
 -- tulostaa "HEI nimi"
