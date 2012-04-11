@@ -34,7 +34,9 @@ tervehdi s = do
 -- näppäimistöltä ja sitten tervehtii kuten edellisessä tehtävässä.
 
 tervehdi' :: IO ()
-tervehdi' = undefined
+tervehdi' = do
+  s <- getLine
+  putStrLn $ "HEI "++s
 
 -- Tehtävä 4: Määrittele operaatio lueSanat n joka lukee käyttäjältä n
 -- sanaa (yksi per rivi) ja palauttaa ne aakkosjärjestyksessä
