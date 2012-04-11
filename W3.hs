@@ -60,7 +60,18 @@ lueKunnes f = undefined
 -- ensimmäistä fibonaccin lukua, yhden per rivi
 
 printFibs :: Int -> IO ()
-printFibs n = undefined
+printFibs 0 = return ()
+printFibs n = do 
+  let fibs = map (show . fibonacci) [1..n]
+  mapM_ putStrLn fibs
+
+
+fibonacci :: Int -> Int
+fibonacci n = fibonacci' 0 1 n
+
+fibonacci' :: Int -> Int -> Int -> Int
+fibonacci' a b 1 = b
+fibonacci' a b n = fibonacci' b (a+b) (n-1)
 
 -- Tehtävä 7: Määrittele operaatio isums n, joka lukee käyttäjältä n
 -- lukua ja palauttaa niitten summan. Lisäksi jokaisen luvun jälkeen
