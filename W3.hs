@@ -42,7 +42,11 @@ tervehdi' = do
 -- sanaa (yksi per rivi) ja palauttaa ne aakkosjärjestyksessä
 
 lueSanat :: Int -> IO [String]
-lueSanat n = undefined
+lueSanat 0 = return []
+lueSanat n = do 
+  s <- getLine
+  t <- lueSanat (n-1)
+  return $ sort $ s:t
 
 -- Tehtävä 5: Määrittele operaatio lueKunnes f, joka lukee käyttäjältä
 -- merkkijonoja ja palauttaa ne listana. Lukeminen lopetetaan kun f
