@@ -84,7 +84,14 @@ fibonacci' a b n = fibonacci' b (a+b) (n-1)
 -- tulostetaan siihenastinen summa luvuista.
 
 isums :: Int -> IO Int
-isums n = undefined
+isums n = isums' n 0
+
+isums' 0 prev_sum = return prev_sum
+isums' n prev_sum = do
+  line <- readLn
+  let cur_sum =  line + prev_sum
+  putStrLn $ show $ cur_sum
+  isums' (n-1) cur_sum
 
 -- Tehtävä 8: when on hyödyllinen funktio, mutta sen ensimmäien
 -- argumentti on tyyppiä Bool. Toteuta whenM joka toimii samoin mutta
