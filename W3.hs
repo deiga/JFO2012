@@ -54,7 +54,13 @@ lueSanat n = do
 -- True ei liitetä listaan).
 
 lueKunnes :: (String -> Bool) -> IO [String]
-lueKunnes f = undefined
+lueKunnes f = do
+  line <- getLine  
+  if f line  
+      then return []  
+      else do 
+          rivit <- lueKunnes f
+          return $ line  : rivit
 
 -- Tehtävä 6: Määrittele operaatio printFibs n, joka tulostaa n
 -- ensimmäistä fibonaccin lukua, yhden per rivi
@@ -120,6 +126,20 @@ while ehto op = do
 -- IO-operaation op, ja palauttaa IO-operaation joka tulostaa annetun
 -- s, kutsuu op, ja tulostaa jälleen s. Lopuksi operaation pitäisi
 -- palauttaa op:n palautusarvo.
+--
+-- Jos edellinen kuulostaa heprealta, tässä vaihtoehtoinen
+-- tehtävänanto: (debug s op) toimii täsmälleen kuten op, mutta aluksi
+-- ja lopuksi tulostetaan merkkijono s.
+--
+-- Esimerkkejä:
+--   debug "MOI" (return 3)
+--     - tulostaa kaksi riviä joilla lukee "MOI"
+--     - tuottaa arvon 3
+--   debug "HEI" getLine
+--     1. tulostaa "HEI"
+--     2. lukee käyttäjältä rivin
+--     3. tulostaa "HEI"
+--     4. tuottaa käyttäjän syöttämän rivin
 
 debug :: String -> IO a -> IO a
 debug s op = undefined
@@ -196,6 +216,18 @@ yhdista op1 op2 c = undefined
 -- 2. operaation inc ajaminen kasvattaa seuraavien get-kutsujen palautusarvoa
 --
 -- Kyseessä on siis yksinkertainen tilallinen laskuri
+-- 
+-- Esimerkki mkCounterin toiminnasta (GHCi:ssä)
+--  *W3> (inc,get) <- mkCounter
+--  *W3> inc
+--  *W3> inc
+--  *W3> get
+--  2
+--  *W3> inc
+--  *W3> inc
+--  *W3> get
+--  4
+
 
 mkCounter :: IO (IO (), IO Int)
 mkCounter = undefined
@@ -279,7 +311,7 @@ compareFiles a b = undefined
 -- interact':n tulisi toimia niin että se lukee käyttäjältä rivin,
 -- syöttää rivin ja tämänhetkisen tilan f:lle. f palauttaa booleanin,
 -- tulosteen ja uuden tilan. f:n palauttama tuloste tulostetaan
--- ruudulle, ja jos palautettu boolean on True, jatketaan f:n
+-- ruudulle, ja jos palautettu boolean on True, jatketaan interact':n
 -- suorittamista uudella tilalla. Jos palautettu boolean on False,
 -- loppuu suoritus ja operaatio palauttaa lopputilan.
 --
