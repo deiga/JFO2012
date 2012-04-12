@@ -149,7 +149,11 @@ while ehto op = do
 --     4. tuottaa käyttäjän syöttämän rivin
 
 debug :: String -> IO a -> IO a
-debug s op = undefined
+debug s op = do
+  putStrLn s
+  foo <- op
+  putStrLn s
+  return foo
 
 -- Tehtävä 11: Toteuta itse funktio mapM_. Saat käyttää (puhtaita)
 -- listafunktioita ja listojen hahmontunnistusta
