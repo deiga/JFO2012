@@ -48,7 +48,9 @@ eitherDiv x y = Right $ div x y
 --   ==> []
 
 mapMaybe :: (a -> Maybe b) -> [a] -> [b]
-mapMaybe f xs = undefined
+mapMaybe _ [] = []
+mapMaybe f (x:xs) = case f x of Nothing -> mapMaybe f xs
+                                Just x -> x : mapMaybe f xs
 
 -- Tehtävä 4: Toteuta funktio classify, joka saa listan arvoja tyyppiä
 -- Either a b ja jakaa tuottaa näistä listan tyypin a arvoja ja listan
