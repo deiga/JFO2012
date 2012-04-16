@@ -24,7 +24,8 @@ safeDiv x y = Just $ div x y
 -- koitettiin jakaa nollalla.
 
 eitherDiv :: Integer -> Integer -> Either String Integer
-eitherDiv x y = undefined
+eitherDiv x 0 = Left $ show x ++ "/0"
+eitherDiv x y = Right $ div x y
 
 -- Tehtävä 3: Toteuta funktio mapMaybe, joka toimii hieman kuten
 -- yhdistetty map & filter.
