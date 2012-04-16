@@ -11,7 +11,8 @@ module W4 where
 --
 
 safeDiv :: Integer -> Integer -> Maybe Integer
-safeDiv x y = undefined
+safeDiv _ 0	= Nothing
+safeDiv x y = Just $ div x y
 
 -- Tehtävä 2: Tässä tehtävässä toteutetaan funktio eitherDiv, joka
 -- toimii hieman kuten safeDiv, mutta palauttaa arvon tyyppiä Either
