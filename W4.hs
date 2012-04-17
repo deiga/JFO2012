@@ -74,30 +74,31 @@ classify es = undefined
 --
 -- Määrittele myös Person-arvo matti ja Person-tyypin käsittelemiseen
 -- operaatiot getAge, getName, setAge ja setName. (Ks. alla)
-
-data Person = PersonUndefined
+type Name = String
+type Age  = Int
+data Person = Person Name Age
   deriving Show
 
 -- matti on henkilö jonka nimi on "Matti" ja ikä 90
 matti :: Person
-matti = undefined
+matti = Person "Matti" 90
 
 -- getName palauttaa henkilön nimen
 getName :: Person -> String
-getName p = undefined
+getName (Person name _) = name
 
 -- getAge palauttaa henkilön iän
 getAge :: Person -> Int
-getAge p = undefined
+getAge (Person _ age) = age
 
 -- setName asettaa henkilön nimen
 -- HUOM! setName palauttaa uuden henkilön sillä Haskellissa mikään ei muutu
 setName :: String -> Person -> Person
-setName name p = undefined
+setName name (Person _ age) = Person name age
 
 -- setAge asettaa henkilön iän
 setAge :: Int -> Person -> Person
-setAge age p = undefined
+setAge age (Person name _) = Person name age
 
 
 -- Tehtävä 7&8: Määrittele tietotyyppi TwoCounters joka esittää kahta
