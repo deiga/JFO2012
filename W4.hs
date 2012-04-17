@@ -157,26 +157,29 @@ incB (TwoCounters a b) = TwoCounters a (b+1)
 --   ==> 2
 -- get (tick (tick (toggle (tick zero))))
 --   ==> -1
-
-data UpDown = UpDownUndefined1 | UpDownUndefined2
+type Counter = Int
+data UpDown = Up Counter | Down Counter
 
 -- zero on nouseva laskuri jonka arvo on 0
 zero :: UpDown
-zero = undefined
+zero = Up 0
 
 -- get palauttaa laskurin arvon
 get :: UpDown -> Int
-get ud = undefined
+get ud = case ud of Up x -> x
+                    Down x -> x
 
 -- tick kasvattaa nousevaa laskuria yhdellä ja pienentää laskevaa
 -- laskuria yhdellä
 tick :: UpDown -> UpDown
-tick ud = undefined
+tick ud = case ud of Up x -> Up (x+1)
+                     Down x -> Down (x-1)
 
 -- toggle muuttaa nousevan laskurin laskevaksi ja päinvastoin.
 -- Laskurin arvo ei muutu.
 toggle :: UpDown -> UpDown
-toggle ud = undefined
+toggle ud = case ud of Up x -> Down x
+                       Down x -> Up x
 
 -- !!!!!
 -- Muutama seuraava tehtävä käsittelevät luennoilla esiteltyä
