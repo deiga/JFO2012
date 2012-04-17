@@ -118,28 +118,29 @@ setAge age (Person name _) = Person name age
 --   ==> 2
 -- getB (incB (incA zeros))
 --   ==> 1
-
-data TwoCounters = Undefined
+type A = Int
+type B = Int
+data TwoCounters = TwoCounters A B
 
 -- zeros on TwoCounters-arvo, jossa kummatkin laskurit ovat 0
 zeros :: TwoCounters
-zeros = undefined
+zeros = TwoCounters 0 0
 
 -- getA palauttaa A-laskurin arvon
 getA :: TwoCounters -> Int
-getA tc = undefined
+getA (TwoCounters a _) = a
 
 -- getB palauttaa B-laskurin arvon
 getB :: TwoCounters -> Int
-getB tc = undefined
+getB (TwoCounters _ b) = b
 
 -- incA kasvattaa A-laskurin arvoa yhdellä
 incA :: TwoCounters -> TwoCounters
-incA tc = undefined
+incA (TwoCounters a b) = TwoCounters (a+1) b
 
 -- incB kasvattaa B-laskurin arvoa yhdellä
 incB :: TwoCounters -> TwoCounters
-incB tc = undefined
+incB (TwoCounters a b) = TwoCounters a (b+1)
 
 -- Tehtävä 9&10: Määrittele tietotyyppi UpDown joka esittää laskuria,
 -- joka voi olla joko nousevassa tai laskevassa tilassa. Toteuta myös
