@@ -66,7 +66,12 @@ mapMaybe f (x:xs) = case f x of Nothing -> mapMaybe f xs
 --     ==> ([1,0],[True,False])
 
 classify :: [Either a b] -> ([a],[b])
-classify es = undefined
+classify es =classify' es ([],[])
+
+classify' :: [Either a b] -> ([a], [b]) -> ([a], [b])
+classify' [] tup = tup
+classify' (e:es) (left, right) = case e of Right e -> classify' es (left, right++[e])
+                                           Left e -> classify' es (left++[e], right)
 
 
 -- Tehtävät 5&6: Määrittele tietotyyppi Person, joka sisältää yhden
