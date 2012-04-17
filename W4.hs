@@ -193,13 +193,15 @@ data Tree a = Leaf | Node a (Tree a) (Tree a)
 -- koska puu saattaa olla tyhjä (eli Leaf).
 
 valAtRoot :: Tree a -> Maybe a
-valAtRoot t = undefined
+valAtRoot Leaf = Nothing
+valAtRoot (Node a _ _) = Just a
 
 -- Tehtävä 12: Toteuta funktio treeSize, joka laskee puun solmujen (eli
 -- Node-konstruktorien) lukumäärän.
 
 treeSize :: Tree a -> Int
-treeSize t = undefined
+treeSize Leaf = 0
+treeSize (Node _ l r) = 1 + (treeSize l) + (treeSize r)
 
 -- Tehtävä 13: Toteuta funktio leftest, joka palauttaa puun
 -- vasemmanpuolimmaisen arvon. Palautustyyppi on Maybe a koska
