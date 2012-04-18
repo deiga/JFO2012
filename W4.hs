@@ -316,13 +316,13 @@ mysum :: [Int] -> Int
 mysum is = foldr sumf 0 is
 
 sumf :: Int -> Int -> Int
-sumf x y = undefined
+sumf x y = x+y
 
 mylength :: [a] -> Int
 mylength xs = foldr lengthf 0 xs
 
 lengthf :: a -> Int -> Int
-lengthf x y = undefined
+lengthf x y = y+1
 
 -- Tehtävä 18: Toteuta funktio foldTree, joka on foldin tapainen
 -- operaatio puille (eli yllä kuvaillulle Tree-luokalle).
