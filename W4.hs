@@ -219,7 +219,9 @@ treeSize (Node _ l r) = 1 + (treeSize l) + (treeSize r)
 --   ==> Just 2
 
 leftest :: Tree a -> Maybe a
-leftest t = undefined
+leftest Leaf = Nothing
+leftest (Node x l _) = case leftest l of Nothing -> Just x
+                                         Just a -> Just a
 
 -- Tehtävä 14: Toteuta funktio mapTree, joka toimii kuten map, mutta
 -- puille.
