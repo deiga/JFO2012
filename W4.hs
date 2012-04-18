@@ -265,7 +265,10 @@ mapTree f t = Node (f x) (mapTree f l) (mapTree f r)
 
 
 insertL :: a -> Tree a -> Tree a
-insertL x t = undefined
+insertL x Leaf = Node x Leaf Leaf
+insertL x t = Node val (insertL x l) r
+  where
+    (Node val l r) = t
 
 -- Tehtävä 16: Toteuta funktio measure, joka muuntaa annetun puun
 -- sellaiseksi, että jokaisessa solmussa on ko. solmusta alkavan
