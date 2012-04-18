@@ -233,7 +233,10 @@ leftest (Node x l _) = case leftest l of Nothing -> Just x
 --   ==> (Node 2 (Node 3 Leaf Leaf) (Node 4 Leaf Leaf))
 
 mapTree :: (a -> b) -> Tree a -> Tree b
-mapTree f t = undefined
+mapTree _ Leaf = Leaf
+mapTree f t = Node (f x) (mapTree f l) (mapTree f r)
+  where
+    (Node x l r) = t
 
 -- Tehtävä 15: Toteuta funktio insertL, joka lisää annetun arvon puuhun
 -- mahdollisimman vasemmalle.
