@@ -296,7 +296,10 @@ insertL x t = Node val (insertL x l) r
 
 
 measure :: Tree a -> Tree Int
-measure t = undefined
+measure Leaf = Leaf
+measure t = Node (treeSize t) (measure l) (measure r)
+  where
+    (Node _ l r) = t
 
 -- Tehtävä 17: Standardikirjaston funktio
 --   foldr :: (a -> b -> b) -> b -> [a] -> b
