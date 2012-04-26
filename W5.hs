@@ -26,8 +26,16 @@ allEqual xs = and $ map (== head xs) (tail xs)
 -- secondSmallest [5,3,7,2,3,1]  ==>  Just 2
 
 secondSmallest :: Ord a => [a] -> Maybe a
-secondSmallest xs = undefined
+secondSmallest [_] = Nothing
+secondSmallest (x:y:xs)
+    | x < y     = Just $ secondSmallest' x y xs
+    | x >= y    = Just $ secondSmallest' y x xs
 
+secondSmallest' _ x [] = x
+secondSmallest' smallest snd_smallest (x:xs)
+    | x < smallest      = secondSmallest' x smallest xs
+    | x < snd_smallest  = secondSmallest' smallest x xs
+    | otherwise         = secondSmallest' smallest snd_smallest xs
 -- Tehtävä 3: Määrittele funktio findDifference joka löytää kahden
 -- listan eron. Jos listat ovat eripituisia, tuotetaan arvo
 -- Just "listanpituus /= toisenlistanpituus".
